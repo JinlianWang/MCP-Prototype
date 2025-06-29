@@ -108,9 +108,69 @@ All tools are returned via `GET /tools` using OpenAI-compatible schema.
 ## 🛠️ Future Improvements (Optional Ideas)
 
 - Format timestamps into friendly local time
-- Add a frontend chat UI (HTML or React)
 - Add more tools like `fetch_url`, `summarize`, etc.
 - Store conversations in a database
+
+## 🌐 Web UI Agent
+
+This is a browser-based interface to interact with the MCP agent using plain HTML, JavaScript, and a Node.js backend.
+
+### 📁 Folder Structure
+
+```
+web-ui/
+├── public/
+│   ├── index.html       # Minimal frontend
+│   └── style.css        # Optional basic styling
+├── server/
+│   └── api.js           # Node.js backend (CommonJS-style)
+├── .env                 # OpenAI API key
+├── package.json
+└── README.md
+```
+
+### 🚀 Setup & Run
+
+1. Navigate into `web-ui/`:
+
+```bash
+cd web-ui
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Add your OpenAI key to `.env`:
+
+```
+OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+4. Start the server:
+
+```bash
+node server/api.js
+```
+
+5. Open your browser and go to:
+
+```
+http://localhost:4000
+```
+
+### 🧪 How It Works
+
+- Enter a prompt like:
+  > Say hello to Sunny and tell me the current time.
+
+- The backend will:
+  - Load tools from the MCP server
+  - Let the LLM decide which to call
+  - Call tools as needed
+  - Return the GPT-synthesized reply
 
 ---
 
